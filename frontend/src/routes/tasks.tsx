@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; 
+import axios, { AxiosResponse } from "axios";
+import { TaskModel } from "../models/taskModels";
+
+const API_URL = "http://localhost:3000/api/tasks";
 
 // Task interface
-interface Task {
-  id: number;
-  name: string;
-  details: string;
-  startDate: string;
-  endDate: string;
-  status: string;
-  activityId: number;
-}
+interface Task extends TaskModel {}
 
 const Tasks: React.FC = () => {
   // State to hold tasks
@@ -22,31 +18,22 @@ const Tasks: React.FC = () => {
   // State to manage the task being edited
   const [editingTask, setEditingTask] = useState<Task | null>(null);
 
-  // Placeholder data
-  const placeholderTasks: Task[] = [
-    {
-      id: 1,
-      name: 'Task 1',
-      details: 'test',
-      startDate: '2024-04-01',
-      endDate: '2024-04-01',
-      status: 'Completed',
-      activityId: 1,
-    },
-    {
-      id: 2,
-      name: 'Task 2',
-      details: 'test',
-      startDate: '2024-04-01',
-      endDate: '2024-04-01',
-      status: 'In Progress',
-      activityId: 2,
-    },
-  ];
 
   useEffect(() => {
-    // Set placeholder tasks to state
-    setTasks(placeholderTasks);
+    const fetchTasks = async () => {
+      try {
+        const response: AxiosResponse = await axios.get(API_URL);
+        console.log(response);
+        if (!response.data) return [];
+        const data: TaskModel[] = response.data;
+        setTasks(data);
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    };
+
+    fetchTasks();
   }, []);
 
 
@@ -56,9 +43,11 @@ const Tasks: React.FC = () => {
     setShowModal(true);
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     // Delete the task with the given id
-    setTasks(tasks.filter((task) => task.id !== id));
+    axios.delete(`${API_URL}/${id}`).then(() => {
+      setTasks(tasks.filter((task) => task.id !== id));
+    });
   };
 
   const closeModal = () => {
@@ -66,6 +55,30 @@ const Tasks: React.FC = () => {
     // Closes the editing task state
     setEditingTask(null);
   };
+
+  const createTask = async () => {
+    const newTask = {
+      id: "",
+      name: "",
+      content: "",
+      startDate: new Date(),
+      endDate: new Date(),
+      tags: [],
+    };
+
+    const response: AxiosResponse = await axios.post(API_URL, newTask);
+    const createdTask: TaskModel = response.data;
+    setTasks([...tasks, createdTask]);
+  };
+
+  const updateTask = async (updateModel: Task) => {
+    await axios.put(`${API_URL}/${updateModel.id}`, updateModel);
+    const updatedTasks = tasks.map((task) =>
+      task.id === updateModel.id ? updateModel : task
+    );
+    setTasks(updatedTasks);
+  };
+
 
   return (
     <div>
@@ -75,7 +88,7 @@ const Tasks: React.FC = () => {
       <br />
       <br />
       {/* Add Task button */}
-      <button onClick={() => setShowModal(true)}>Add Task</button>
+       <button onClick={createTask}>Add Task</button>
       <table className="table">
         <thead>
           <tr>
@@ -92,11 +105,10 @@ const Tasks: React.FC = () => {
             tasks.map((task) => (
               <tr key={task.id}>
                 <td>{task.name}</td>
-                <td>{task.details}</td>
+                <td>{task.content}</td>
                 <td>{task.status}</td>
-                <td>{task.startDate}</td>
-                <td>{task.endDate}</td>
-                <td>{task.status}</td>
+                <td>{task.startDate ? task.startDate.toDateString() : ''}</td>
+                <td>{task.endDate ? task.endDate.toLocaleDateString() : ''}</td>
                 <td>
                   {/* Edit button */}
                   <button onClick={() => handleEdit(task)}>Edit</button>
@@ -123,13 +135,15 @@ const Tasks: React.FC = () => {
             <p>You can edit the task here</p>
             {/* Form fields for changing tasks */}
             <input type="text" value={editingTask?.name} onChange={(e) => setEditingTask({ ...editingTask!, name: e.target.value })} />
-            <input type="text" value={editingTask?.details} onChange={(e) => setEditingTask({ ...editingTask!, details: e.target.value })} />
+            <input type="text" value={editingTask?.content} onChange={(e) => setEditingTask({ ...editingTask!, content: e.target.value })} />
             <select value={editingTask?.status || ''} onChange={(e) => setEditingTask({ ...editingTask!, status: e.target.value })}>
               <option value="Completed">Completed</option>
               <option value="In Progress">In Progress</option>
               <option value="Stopped">On Hold</option>
             </select>
-            <button onClick={closeModal}>Save</button>
+            <button onClick={() => updateTask(editingTask!)}>
+              {editingTask?.id ? 'Save changes' : 'Create task'}
+            </button>
             <button onClick={closeModal}>Cancel</button>
           </div>
         </div>
