@@ -80,9 +80,9 @@ const Tasks: React.FC = () => {
           <tr>
             <th>Name</th>
             <th>Details</th>
+            <th>Status</th>
             <th>Start Date</th>
             <th>End Date</th>
-            <th>Status</th>
             <th>Actions</th>
           </tr>
         </thead>
