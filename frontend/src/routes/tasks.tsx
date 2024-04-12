@@ -69,6 +69,10 @@ const Tasks: React.FC = () => {
   return (
     <div>
       <h1>Tasks</h1>
+      {/* Link to dashboard */}
+      <Link to="/">Dashboard</Link>
+      <br />
+      <br />
       {/* Add Task button */}
       <button onClick={() => setShowModal(true)}>Add Task</button>
       <table className="table">
@@ -102,14 +106,14 @@ const Tasks: React.FC = () => {
             ))
           ) : (
             <tr>
-              <td colSpan={4}>You have no tasks, add a new task to keep yourself in check!.</td>
+              <td colSpan={4}>You have no tasks, add a new task to keep yourself in check!</td>
             </tr>
           )}
 
 
         </tbody>
       </table>
-      {/* Popup window that allows one to edit the tasks, currently WIP */}
+      {/* Popup window that allows editing of the tasks,  we'll have to make a new modal that adds a new task too. Currently covers both new and edit. */}
       {showModal && (
         <div className="modal">
           <div className="modal-content">
@@ -122,9 +126,10 @@ const Tasks: React.FC = () => {
             <select value={editingTask?.status || ''} onChange={(e) => setEditingTask({ ...editingTask!, status: e.target.value })}>
               <option value="Completed">Completed</option>
               <option value="In Progress">In Progress</option>
-              <option value="Stopped">Pending</option>
+              <option value="Stopped">On Hold</option>
             </select>
-            <button onClick={closeModal}>Save and Close</button>
+            <button onClick={closeModal}>Save</button>
+            <button onClick={closeModal}>Cancel</button>
           </div>
         </div>
       )}
