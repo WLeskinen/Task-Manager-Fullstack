@@ -89,7 +89,10 @@ const Activities = () => {
       </p>
     {/* Display the list of activities */}
       <div>
-        {activities.map((activity) => (
+        {activities.length === 0 ? (
+        <p>You currently have no activities. Add a new one!</p>
+        ) : (
+        activities.map((activity) => (
           <div key={activity.id}>
             <h4>{activity.name}</h4>
               <strong>Type</strong> {activity.activityType}
@@ -106,7 +109,9 @@ const Activities = () => {
               <button onClick={() => handleDeleteActivity(activity.id)}>Delete</button>
             </div>
           </div>
-        ))}
+         ))
+        )}
+
       </div>
       {/* Popup window that allows editing of the tasks */}
       {EditingActivity && (
