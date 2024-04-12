@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Dashboard: React.FC = () => {
   return (
@@ -6,7 +7,7 @@ const Dashboard: React.FC = () => {
       <h1>Task Manager</h1>
       <div className="dashboard-grid">
         <div className="dashboard-block">
-          <h2>Tasks</h2>
+          <h2><Link to="/tasks">Tasks</Link></h2>
           {/* Placeholder for tasks */}
         </div>
         <div className="dashboard-block">
