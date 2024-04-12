@@ -15,14 +15,14 @@ const Dashboard: React.FC = () => {
           {/* Placeholder for activities */}
         </div>
         <div className="dashboard-block">
-          <h2>Statistics / Analytics</h2>
+          <h2><Link to ="/statistics">Statistics / Analytics</Link></h2>
           {/* Placeholder for statistics */}
         </div>
       </div>
       <div className="overview-info">
         <h2>Overview</h2>
         {/* Placeholder for overview information */}
-        <p>Additional details about stats etc will be added here later</p>
+        <p>Additional details about stats etc. Will be added here later</p>
       </div>
     </div>
   );
