@@ -49,15 +49,16 @@ const Tasks: React.FC = () => {
     setTasks(placeholderTasks);
   }, []);
 
-  const handleDelete = (id: number) => {
-    // Delete the task with the given id
-    setTasks(tasks.filter((task) => task.id !== id));
-  };
 
   const handleEdit = (task: Task) => {
     // Opens the modal for editing the task
     setEditingTask(task);
     setShowModal(true);
+  };
+
+  const handleDelete = (id: number) => {
+    // Delete the task with the given id
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
   const closeModal = () => {

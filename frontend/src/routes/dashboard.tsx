@@ -22,6 +22,7 @@ const Dashboard: React.FC = () => {
       <div className="overview-info">
         <h2>Overview</h2>
         {/* Placeholder for overview information */}
+        <p>Additional details about stats etc will be added here later</p>
       </div>
     </div>
   );

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { Link } from 'react-router-dom';
+
 
 // Activity interface
 interface Activity {
@@ -17,6 +19,14 @@ const Activities = () => {
   // State to manage the activity being edited
   const [currentActivity, setCurrentActivity] = useState<Activity | null>(null);
 
+
+   // Function for editing an activity
+   const handleEditActivity = (activity: Activity) => {
+    setCurrentActivity(activity);
+    setEditingActivity(true);
+  };
+
+
   // Function to delete an activity
   const handleDeleteActivity = (activityId: number) => {
     // Remove the activity with the given ID
@@ -25,11 +35,6 @@ const Activities = () => {
     );
   };
 
-  // Function responsible for editing an activity
-  const handleEditActivity = (activity: Activity) => {
-    setCurrentActivity(activity);
-    setEditingActivity(true);
-  };
 
   // Function to save the changes made to the activity
   const handleSaveChanges = () => {
@@ -77,20 +82,23 @@ const Activities = () => {
   return (
     <div>
       <h1>Activities</h1>
-      {/* Display the list of activities */}
+      {/* Link to dashboard */}
+      <Link to="/">Dashboard</Link>
+      <p>
+      <button onClick={() => setEditingActivity(true)}>Add New Activity</button>
+      </p>
+    {/* Display the list of activities */}
       <div>
         {activities.map((activity) => (
           <div key={activity.id}>
-            <h3>{activity.name}</h3>
-            <p>
+            <h4>{activity.name}</h4>
               <strong>Type</strong> {activity.activityType}
-            </p>
-            <p>
+              <p>
               <strong>Start Date</strong> {activity.startDate}
-            </p>
-            <p>
+              </p>
               <strong>End Date</strong> {activity.endDate}
-            </p>
+               <p>
+               </p>
             <div>
               {/* Edit button */}
               <button onClick={() => handleEditActivity(activity)}>Edit</button>
@@ -129,8 +137,9 @@ const Activities = () => {
                 <input type="date" value={currentActivity?.endDate} onChange={(e) => setCurrentActivity({...currentActivity!, endDate: e.target.value, })}/>
               </div>
               <div>
-                {/* Save Changes button */}
+                {/* Save/Cancel button */}
                 <button>Save Changes</button>
+                <button onClick={() => setEditingActivity(false)}>Cancel</button>
               </div>
             </form>
           </div>
