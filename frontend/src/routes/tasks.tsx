@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; //to be used later
+import { Link } from 'react-router-dom'; 
 
-// Define a Task interface
+// Task interface
 interface Task {
   id: number;
   name: string;
@@ -22,14 +22,14 @@ const Tasks: React.FC = () => {
   // State to manage the task being edited
   const [editingTask, setEditingTask] = useState<Task | null>(null);
 
-  // Placeholder tasks data
+  // Placeholder data
   const placeholderTasks: Task[] = [
     {
       id: 1,
       name: 'Task 1',
       details: 'test',
-      startDate: '1.4.2024',
-      endDate: '1.4.2024',
+      startDate: '2024-04-01',
+      endDate: '2024-04-01',
       status: 'Completed',
       activityId: 1,
     },
@@ -37,8 +37,8 @@ const Tasks: React.FC = () => {
       id: 2,
       name: 'Task 2',
       details: 'test',
-      startDate: '1.4.2024',
-      endDate: '1.4.2024',
+      startDate: '2024-04-01',
+      endDate: '2024-04-01',
       status: 'In Progress',
       activityId: 2,
     },
@@ -55,14 +55,14 @@ const Tasks: React.FC = () => {
   };
 
   const handleEdit = (task: Task) => {
-    // Open the modal for editing the task
+    // Opens the modal for editing the task
     setEditingTask(task);
     setShowModal(true);
   };
 
   const closeModal = () => {
     setShowModal(false);
-    // Clear the editing task state
+    // Closes the editing task state
     setEditingTask(null);
   };
 

@@ -11,7 +11,7 @@ const Dashboard: React.FC = () => {
           {/* Placeholder for tasks */}
         </div>
         <div className="dashboard-block">
-          <h2>Activities</h2>
+        <h2><Link to="/activities">Activities</Link></h2>
           {/* Placeholder for activities */}
         </div>
         <div className="dashboard-block">
