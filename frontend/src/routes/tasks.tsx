@@ -25,10 +25,10 @@ const Tasks: React.FC = () => {
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
 
   // State to manage the task being edited
-  const [editingTask, setEditingTask] = useState<Task | null>(null);
+  const [editingTask, setEditingTask] = useState<Task>({ id: 0, name: "", details: "", startDate: "", endDate: "", status: "" });
 
   // State to manage the task being added
-  const [addingTask, setAddingTask] = useState<Task | null>(null);
+  const [addingTask, setAddingTask] = useState<Task>({ id: 0, name: "", details: "", startDate: "", endDate: "", status: "" });
 
 
   useEffect(() => {
@@ -69,31 +69,58 @@ const Tasks: React.FC = () => {
   };
 
 
-  const handleAdd = () => {
-    // Opens the modal for adding a new task
-    setAddingTask({
-      id: tasks.length + 1,
-      name: '',
-      details: '',
-      startDate: '',
-      endDate: '',
-      status: ''
-    });
-    setShowAddModal(true);
+  const handleAdd = async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/api/tasks/${addingTask!}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(addingTask)
+      });
+      if (!response.ok) {
+        throw new Error('Failed to add task');
+      }
+      const data = await response.json();
+      setTasks([...tasks, data]);
+      setShowAddModal(false);
+    } catch (error) {
+      console.error('Error adding task:', error);
+    }
   };
 
-
+    // Handles the tasks that get saved new task
+    const handleEditSave = async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/api/tasks/${editingTask!.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(editingTask)
+      });
+      if (!response.ok) {
+        throw new Error('Failed to update task');
+      }
+      const data = await response.json();
+      setTasks(tasks.map(task => (task.id === data.id ? data : task)));
+      setShowEditModal(false);
+    } catch (error) {
+      console.error('Error updating task:', error);
+    }
+  };
+    
 
   const closeEditModal = () => {
     setShowEditModal(false);
     // Closes the editing task state
-    setEditingTask(null);
+    setEditingTask({ id: 0, name: "", details: "", startDate: "", endDate: "", status: "" });
   };
 
   const closeAddModal = () => {
     setShowAddModal(false);
     // Closes the adding task state
-    setAddingTask(null);
+    setAddingTask({ id: 0, name: "", details: "", startDate: "", endDate: "", status: "" });
   };
 
   return (
@@ -104,7 +131,7 @@ const Tasks: React.FC = () => {
       <br />
       <br />
       {/* Add Task button */}
-      <button onClick={handleAdd}>Add Task</button>
+      <button onClick={ () => setShowAddModal(true)}>Add Task</button>
       <table className="table">
         <thead>
           <tr>
@@ -158,12 +185,14 @@ const Tasks: React.FC = () => {
               <option value="In Progress">In Progress</option>
               <option value="Stopped">On Hold</option>
             </select>
-            <button onClick={closeEditModal}>Save</button>
+            <button onClick={handleEditSave}>Save</button>
             <button onClick={closeEditModal}>Cancel</button>
           </div>
         </div>
       )}
 
+      
+      {/* Popup window that allows adding new task */}
       {showAddModal && (
         <div className="modal">
           <div className="modal-content">
@@ -180,7 +209,7 @@ const Tasks: React.FC = () => {
               <option value="In Progress">In Progress</option>
               <option value="Stopped">On Hold</option>
             </select>
-            <button onClick={closeAddModal}>Save</button>
+            <button onClick={handleAdd}>Save</button>
             <button onClick={closeAddModal}>Cancel</button>
           </div>
         </div>
