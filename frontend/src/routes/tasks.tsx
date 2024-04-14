@@ -15,11 +15,18 @@ const Tasks: React.FC = () => {
   // State to hold tasks
   const [tasks, setTasks] = useState<Task[]>([]);
   
-  // State to manage modal visibility
-  const [showModal, setShowModal] = useState<boolean>(false);
- 
+  // State to manage the edit modal visibility
+  const [showEditModal, setShowEditModal] = useState<boolean>(false);
+
+  // State to manage edit modal visibility
+  const [showAddModal, setShowAddModal] = useState<boolean>(false);
+
   // State to manage the task being edited
   const [editingTask, setEditingTask] = useState<Task | null>(null);
+
+  // State to manage the task being added
+  const [addingTask, setAddingTask] = useState<Task | null>(null);
+
 
   // Placeholder data
   const placeholderTasks: Task[] = [
@@ -50,8 +57,8 @@ const Tasks: React.FC = () => {
 
   const handleEdit = (task: Task) => {
     // Opens the modal for editing the task
-    setEditingTask(task);
-    setShowModal(true);
+    setShowEditModal(true);
+    setShowEditModal(true);
   };
 
   const handleDelete = (id: number) => {
@@ -59,10 +66,32 @@ const Tasks: React.FC = () => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  const closeModal = () => {
-    setShowModal(false);
+
+  const handleAdd = () => {
+    // Opens the modal for adding a new task
+    setAddingTask({
+      id: tasks.length + 1,
+      name: '',
+      details: '',
+      startDate: '',
+      endDate: '',
+      status: ''
+    });
+    setShowAddModal(true);
+  };
+
+
+
+  const closeEditModal = () => {
+    setShowEditModal(false);
     // Closes the editing task state
     setEditingTask(null);
+  };
+
+  const closeAddModal = () => {
+    setShowAddModal(false);
+    // Closes the adding task state
+    setAddingTask(null);
   };
 
   return (
@@ -73,7 +102,7 @@ const Tasks: React.FC = () => {
       <br />
       <br />
       {/* Add Task button */}
-      <button onClick={() => setShowModal(true)}>Add Task</button>
+      <button onClick={handleAdd}>Add Task</button>
       <table className="table">
         <thead>
           <tr>
@@ -111,10 +140,10 @@ const Tasks: React.FC = () => {
         </tbody>
       </table>
       {/* Popup window that allows editing of the tasks,  we'll have to make a new modal that adds a new task too. Currently covers both new and edit. */}
-      {showModal && (
+      {showEditModal && (
         <div className="modal">
           <div className="modal-content">
-            <span className="close" onClick={closeModal}>&times;</span>
+            <span className="close" onClick={closeEditModal}>&times;</span>
             <h2>Edit Task</h2>
             <p>You can edit the task here</p>
             {/* Form fields for changing tasks */}
@@ -127,8 +156,30 @@ const Tasks: React.FC = () => {
               <option value="In Progress">In Progress</option>
               <option value="Stopped">On Hold</option>
             </select>
-            <button onClick={closeModal}>Save</button>
-            <button onClick={closeModal}>Cancel</button>
+            <button onClick={closeEditModal}>Save</button>
+            <button onClick={closeEditModal}>Cancel</button>
+          </div>
+        </div>
+      )}
+
+      {showAddModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeAddModal}>&times;</span>
+            <h2>Add a new task!</h2>
+            <p>You can add a new task here</p>
+            {/* Form fields for changing tasks */}
+            <input type="text" value={editingTask?.name} onChange={(e) => setAddingTask({ ...addingTask!, name: e.target.value })} />
+            <input type="text" value={editingTask?.details} onChange={(e) => setAddingTask({ ...addingTask!, details: e.target.value })} />
+            <label> Start Date: <input type="date" value={editingTask?.startDate} onChange={(e) => setAddingTask({ ...addingTask!, startDate: e.target.value })} /> </label>
+            <label> End Date: <input type="date" value={editingTask?.endDate} onChange={(e) => setAddingTask({ ...addingTask!, endDate: e.target.value })} /> </label>
+            <select value={editingTask?.status || ''} onChange={(e) => setAddingTask({ ...addingTask!, status: e.target.value })}>
+              <option value="Completed">Completed</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Stopped">On Hold</option>
+            </select>
+            <button onClick={closeAddModal}>Save</button>
+            <button onClick={closeAddModal}>Cancel</button>
           </div>
         </div>
       )}

@@ -8,3 +8,12 @@ CREATE TABLE tasks (
 );
 
 -- Add the rest of the commands here, so that they're easily accessible when testing--
+
+CREATE TABLE Tasks (
+    id INT PRIMARY KEY,
+    name VARCHAR(255),
+    details TEXT,
+    startDate DATE,
+    endDate DATE,
+    status VARCHAR(50)
+);
