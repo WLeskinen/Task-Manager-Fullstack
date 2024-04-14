@@ -1,6 +1,6 @@
 CREATE TABLE tasks (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255),
+  name VARCHAR(255) NOT NULL,
   content TEXT,
   startDate DATE,
   endDate DATE,
