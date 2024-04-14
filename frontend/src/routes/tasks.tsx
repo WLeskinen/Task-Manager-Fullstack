@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; 
+import axios, { AxiosResponse } from "axios";
 
 // Task interface
 interface Task {
@@ -10,6 +11,8 @@ interface Task {
   endDate: string;
   status: string;
 }
+
+const API_URL = "http://localhost:3000/api/tasks";
 
 const Tasks: React.FC = () => {
   // State to hold tasks
@@ -28,42 +31,41 @@ const Tasks: React.FC = () => {
   const [addingTask, setAddingTask] = useState<Task | null>(null);
 
 
-  // Placeholder data
-  const placeholderTasks: Task[] = [
-    {
-      id: 1,
-      name: 'Task 1',
-      details: 'test',
-      startDate: '2024-04-01',
-      endDate: '2024-04-01',
-      status: 'Completed'
-    },
-
-    {
-      id: 2,
-      name: 'Task 2',
-      details: 'test',
-      startDate: '2024-04-01',
-      endDate: '2024-04-01',
-      status: 'In Progress'
-    },
-  ];
-
   useEffect(() => {
-    // Set placeholder tasks to state
-    setTasks(placeholderTasks);
+    // Fetch tasks from the backend.
+    fetchTasks();
   }, []);
+
+  const fetchTasks = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/tasks');
+      if (!response.ok) {
+        throw new Error('Failed to fetch tasks');
+      }
+      const data = await response.json();
+      setTasks(data);
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+    }
+  };
 
 
   const handleEdit = (task: Task) => {
     // Opens the modal for editing the task
-    setShowEditModal(true);
+    setEditingTask(task);
     setShowEditModal(true);
   };
 
-  const handleDelete = (id: number) => {
-    // Delete the task with the given id
-    setTasks(tasks.filter((task) => task.id !== id));
+  // Delets a task from the database and the application.
+  const handleDelete = async (id: number) => {
+    try {
+      await fetch(`http://localhost:3000/api/tasks/${id}`, {
+        method: 'DELETE'
+      });
+      setTasks(tasks.filter((task) => task.id !== id));
+    } catch (error) {
+      console.error('Error deleting task:', error);
+    }
   };
 
 

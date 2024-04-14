@@ -1,3 +1,4 @@
+--TABLE CREATION FOR TASKS--
 CREATE TABLE tasks (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
@@ -7,7 +8,7 @@ CREATE TABLE tasks (
   status VARCHAR(255) CHECK (status IN ('In Progress', 'On Hold', 'Completed'))
 );
 
-
+--INSERTING DATA INTO OUR TASK TABLES--
 INSERT INTO tasks (name, details, startDate, endDate, status)
 VALUES ('Do homework', 'test', '2024-04-15', '2024-04-15', 'In Progress'),
        ('Hate everything', 'test 2', '2024-04-15', '2024-04-15', 'On Hold');
