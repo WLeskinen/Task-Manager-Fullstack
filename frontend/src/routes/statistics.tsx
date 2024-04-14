@@ -8,6 +8,7 @@ interface StatisticsData {
   completedTasks: number;
   totalActivities: number;
   completedActivities: number;
+
 }
 
 const statistics: React.FC = () => {

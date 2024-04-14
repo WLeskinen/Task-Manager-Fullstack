@@ -4,7 +4,7 @@ const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'TaskManager',
-  password: '123456',
+  password: 'student', // ADD YOUR OWN POSTGRESQL PASSWORD HERE
   port: 5432,
 });
 module.exports = pool;
