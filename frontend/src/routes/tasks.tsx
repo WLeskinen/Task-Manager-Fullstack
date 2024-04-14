@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; 
-import axios, { AxiosResponse } from "axios";
 
 // Task interface
 interface Task {
@@ -12,7 +11,6 @@ interface Task {
   status: string;
 }
 
-const API_URL = "http://localhost:3000/api/tasks";
 
 const Tasks: React.FC = () => {
   // State to hold tasks
@@ -71,8 +69,8 @@ const Tasks: React.FC = () => {
 
   const handleAdd = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/tasks/${addingTask!}`, {
-        method: 'PUT',
+      const response = await fetch(`http://localhost:3000/api/tasks`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
