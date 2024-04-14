@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 const taskRoutes = require('./routes/taskRoutes');
+const activityRoutes = require('./routes/activityRoutes');
 const pool = require('./db');
 
 const app = express();
@@ -26,6 +27,7 @@ app.get('/', (req, res) => {
 
 
 app.use('/api/tasks', taskRoutes)
+app.use('/api/activities', activityRoutes)
 
 
 
