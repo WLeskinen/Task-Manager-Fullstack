@@ -169,11 +169,11 @@ const Tasks: React.FC = () => {
             <h2>Add a new task!</h2>
             <p>You can add a new task here</p>
             {/* Form fields for changing tasks */}
-            <input type="text" value={editingTask?.name} onChange={(e) => setAddingTask({ ...addingTask!, name: e.target.value })} />
-            <input type="text" value={editingTask?.details} onChange={(e) => setAddingTask({ ...addingTask!, details: e.target.value })} />
-            <label> Start Date: <input type="date" value={editingTask?.startDate} onChange={(e) => setAddingTask({ ...addingTask!, startDate: e.target.value })} /> </label>
-            <label> End Date: <input type="date" value={editingTask?.endDate} onChange={(e) => setAddingTask({ ...addingTask!, endDate: e.target.value })} /> </label>
-            <select value={editingTask?.status || ''} onChange={(e) => setAddingTask({ ...addingTask!, status: e.target.value })}>
+            <input type="text" value={addingTask?.name} onChange={(e) => setAddingTask({ ...addingTask!, name: e.target.value })} />
+            <input type="text" value={addingTask?.details} onChange={(e) => setAddingTask({ ...addingTask!, details: e.target.value })} />
+            <label> Start Date: <input type="date" value={addingTask?.startDate} onChange={(e) => setAddingTask({ ...addingTask!, startDate: e.target.value })} /> </label>
+            <label> End Date: <input type="date" value={addingTask?.endDate} onChange={(e) => setAddingTask({ ...addingTask!, endDate: e.target.value })} /> </label>
+            <select value={addingTask?.status || ''} onChange={(e) => setAddingTask({ ...addingTask!, status: e.target.value })}>
               <option value="Completed">Completed</option>
               <option value="In Progress">In Progress</option>
               <option value="Stopped">On Hold</option>
