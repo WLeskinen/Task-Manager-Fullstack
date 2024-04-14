@@ -8,10 +8,9 @@ interface StatisticsData {
   completedTasks: number;
   totalActivities: number;
   completedActivities: number;
-
 }
 
-const statistics: React.FC = () => {
+const Statistics: React.FC = () => {
   const [statistics, setStatistics] = useState<StatisticsData>({
     totalTasks: 0,
     completedTasks: 0,
@@ -33,29 +32,16 @@ const statistics: React.FC = () => {
       });
     };
 
-
     fetchStatistics();
   }, []);
 
+  // Calculate incomplete tasks and activities
+  const incompleteTasks = statistics.totalTasks - statistics.completedTasks;
+  const incompleteActivities = statistics.totalActivities - statistics.completedActivities;
 
-
-    // AXIOS CODE FOR WHEN DATABASE IS IMPLEMENTED.
-
-    // useEffect(() => {
-    //  const fetchStatistics = async () => {
-    //    const tasksResponse = await axios.get('/tasks/statistics');
-    //   const activitiesResponse = await axios.get('/activities/statistics');
-    //      setStatistics({
-    //        totalTasks: tasksResponse.data.total,
-    //        completedTasks: tasksResponse.data.completed,
-    //        totalActivities: activitiesResponse.data.total,
-    //        completedActivities: activitiesResponse.data.completed,
-    //      });
-    //    };
-    //
-    //    fetchStatistics();
-    //  }, []); 
-
+  // Calculate percentage difference between completed and total tasks and activities
+  const tasksPercentageDifference = ((statistics.completedTasks / statistics.totalTasks) * 100).toFixed(2);
+  const activitiesPercentageDifference = ((statistics.completedActivities / statistics.totalActivities) * 100).toFixed(2);
 
   return (
     <div>
@@ -65,11 +51,15 @@ const statistics: React.FC = () => {
       <h2>Tasks</h2>
       <p>Total: {statistics.totalTasks}</p>
       <p>Completed: {statistics.completedTasks}</p>
+      <p>Incomplete: {incompleteTasks}</p>
+      <p>Percentage Completion: {tasksPercentageDifference}%</p>
       <h2>Activities</h2>
       <p>Total: {statistics.totalActivities}</p>
       <p>Completed: {statistics.completedActivities}</p>
+      <p>Incomplete: {incompleteActivities}</p>
+      <p>Percentage Completion: {activitiesPercentageDifference}%</p>
     </div>
   );
 };
 
-export default statistics;
+export default Statistics;
