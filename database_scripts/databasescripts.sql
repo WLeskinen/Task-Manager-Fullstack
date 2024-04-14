@@ -2,8 +2,8 @@ CREATE TABLE tasks (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   content TEXT,
-  startdate DATE,
-  enddate DATE,
+  startDate DATE,
+  endDate DATE,
   tags TEXT[]
 );
 

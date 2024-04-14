@@ -18,6 +18,8 @@ const Tasks: React.FC = () => {
   // State to manage the task being edited
   const [editingTask, setEditingTask] = useState<Task | null>(null);
 
+  
+
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -54,6 +56,12 @@ const Tasks: React.FC = () => {
     setShowModal(false);
     // Closes the editing task state
     setEditingTask(null);
+  };
+
+  const addTask = () => {
+    // Adding a new task
+    setEditingTask(null);
+    setShowModal(true);
   };
 
   const createTask = async () => {
@@ -141,6 +149,8 @@ const Tasks: React.FC = () => {
               <option value="In Progress">In Progress</option>
               <option value="Stopped">On Hold</option>
             </select>
+            <input type="date" value={editingTask?.startDate?.toISOString().slice(0, 10) || ''} onChange={(e) => setEditingTask({ ...editingTask!, startDate: new Date(e.target.value) })} />
+            <input type="date" value={editingTask?.endDate?.toISOString().slice(0, 10) || ''} onChange={(e) => setEditingTask({ ...editingTask!, endDate: new Date(e.target.value) })} />
             <button onClick={() => updateTask(editingTask!)}>
               {editingTask?.id ? 'Save changes' : 'Create task'}
             </button>
