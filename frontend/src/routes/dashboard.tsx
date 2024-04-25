@@ -26,9 +26,15 @@ const Dashboard: React.FC = () => {
       </div>
       <div>
       <h3>Tasks</h3>
+      <p>Task 1</p>
+      <p>Task 2</p>
+      <p>Task 3</p>
       </div>
       <div>
       <h3>Activities</h3>
+      <p>Activity 1</p>
+      <p>Activity 2</p>
+      <p>Activity 3</p>
       </div>
     </div>
   );
