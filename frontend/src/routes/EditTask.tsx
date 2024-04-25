@@ -96,6 +96,26 @@ const EditTask: React.FC<EditTaskProps> = ({ editingTask, setEditingTask, setTas
                       />
                     </label>
                   </div>
+                  <label>
+                      <strong>Status</strong>
+                      {editingTask ? (
+                      <select
+                        value={editingTask.status}
+                        onChange={(e) =>
+                          setEditingTask({
+                            ...editingTask,
+                            status: e.target.value,
+                          })
+                        }
+                      >
+                        <option value="Not Started">Not Started</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                      </select>
+                      ) : (
+                         <p>Loading...</p>
+                      )}
+                    </label>
                   <div>
                     <label>
                       <strong>Tags</strong>
