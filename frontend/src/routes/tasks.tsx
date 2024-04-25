@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
 import { TaskModel } from "../models/taskModels";
 import axios, { AxiosResponse } from "axios";
 import { Table } from 'react-bootstrap';
@@ -7,6 +6,7 @@ import AddTask from './AddTask';
 import EditTask from './EditTask';
 import DeleteTask from './DeleteTask';
 import { format, parseISO } from 'date-fns';
+import NavBar from './navBar';
 
 const API_URL = "http://localhost:3000/api/tasks";
 
@@ -38,9 +38,8 @@ const Tasks: React.FC = () => {
 
   return (
     <div>
+      <NavBar />
       <h1>Tasks</h1>
-      {/* Link to dashboard */}
-      <Link to="/"> Dashboard</Link>
       <p>
         <button onClick={() => setNewTask({} as Task)}>Add New Task</button>
       </p>

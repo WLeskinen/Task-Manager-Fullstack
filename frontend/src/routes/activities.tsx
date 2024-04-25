@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
 import { ActivityModel } from "../models/activityModels";
 import axios, { AxiosResponse } from "axios";
 import { Table } from 'react-bootstrap';
 import AddActivity from './AddActivity';
 import EditActivity from './EditActivity';
 import DeleteActivity from './DeleteActivity';
+import NavBar from './navBar';
 
 const API_URL = "http://localhost:3000/api/activities";
 
@@ -38,9 +38,8 @@ const Activities: React.FC = () => {
 
   return (
     <div>
+      <NavBar />
       <h1>Activities</h1>
-      {/* Link to dashboard */}
-      <Link to="/"> Dashboard</Link>
       <p>
         <button onClick={() => setNewActivity({} as Activity)}>Add New Activity</button>
       </p>

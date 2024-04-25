@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // import axios from 'axios'; FOR LATER
-import { Link } from 'react-router-dom';
+import NavBar from './navBar';
+
 
 // Statistics interface
 interface StatisticsData {
@@ -58,9 +59,8 @@ const statistics: React.FC = () => {
 
   return (
     <div>
+      <NavBar />
       <h1>Statistics</h1>
-      {/* Link to dashboard */}
-      <Link to="/">Dashboard</Link>
       <h2>Tasks</h2>
       <p>Total: {statistics.totalTasks}</p>
       <p>Completed: {statistics.completedTasks}</p>
