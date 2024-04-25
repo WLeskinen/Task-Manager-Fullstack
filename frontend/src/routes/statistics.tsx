@@ -22,8 +22,8 @@ const Statistics: React.FC = () => {
     const fetchStatistics = async () => {
       try {
         const [tasksResponse, activitiesResponse] = await Promise.all([
-          axios.get('http://localhost:3000/api/tasks/count'),
-          axios.get('http://localhost:3000/api/activities/count')
+          axios.get('http://localhost:3000/api/tasks'),
+          axios.get('http://localhost:3000/api/activities')
         ]);
     
         setStatistics({
