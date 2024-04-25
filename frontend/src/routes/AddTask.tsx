@@ -94,6 +94,24 @@ const AddTask: React.FC<AddTaskProps> = ({ newTask, setNewTask, setTasks }) => {
                       </label>
                     </div>
                     <div>
+                  <label>
+                    <strong>Status</strong>
+                    <select
+                      value={newTask.status || ''}
+                      onChange={(e) =>
+                        setNewTask({
+                          ...newTask,
+                          status: e.target.value,
+                        })
+                      }
+                    >
+                      <option value="Not Started">Not Started</option>
+                      <option value="In Progress">In Progress</option>
+                      <option value="Completed">Completed</option>
+                    </select>
+                  </label>
+                </div>
+                    <div>
                       <label>
                         <strong>Tags</strong>
                         <input

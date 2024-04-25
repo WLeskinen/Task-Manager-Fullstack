@@ -52,8 +52,9 @@ const Tasks: React.FC = () => {
             <th>Content</th>
             <th>Start Date</th>
             <th>End Date</th>
+            <th>Status</th>
             <th>Tags</th>
-            <th>Actions</th>
+            <th>Options</th>
           </tr>
         </thead>
         <tbody>
@@ -64,6 +65,7 @@ const Tasks: React.FC = () => {
                 <td>{task.content}</td>
                 <td>{task.startDate ? format(parseISO(task.startDate.toDateString()), 'dd/MM/yyyy') : ''}</td>
                 <td>{task.endDate ? format(parseISO(task.endDate.toString()), 'dd/MM/yyyy') : ''}</td>
+                <td>{task.status}</td>
                 <td>{Array.isArray(task.tags) ? task.tags.join(", ") : task.tags}</td>
                 <td>
                   {/* Edit button */}
