@@ -20,9 +20,15 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
       <div className="overview-info">
-        <h2>Overview</h2>
+        <h3>Total Completed</h3>
         {/* Placeholder for overview information */}
-        <p>Additional details about stats etc. Will be added here later</p>
+        <h1>53%</h1>
+      </div>
+      <div>
+      <h3>Tasks</h3>
+      </div>
+      <div>
+      <h3>Activities</h3>
       </div>
     </div>
   );
