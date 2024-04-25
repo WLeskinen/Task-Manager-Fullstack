@@ -110,6 +110,7 @@ const AddTask: React.FC<AddTaskProps> = ({ newTask, setNewTask, setTasks }) => {
                     </div>
                     <button type="submit">Add Task</button>
                   </form>
+                  <button onClick={() => setNewTask(null)}>Cancel</button>
                 </div>
               )
           );
