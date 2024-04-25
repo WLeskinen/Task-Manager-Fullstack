@@ -44,10 +44,18 @@ const deleteTask = (req, res) => {
   })
 };
 
+const countTasks = (req, res) => {
+  pool.query('SELECT COUNT(*) FROM tasks', (error, results) => {
+    if (error) throw error;
+    res.status(200).json({ totalTasks: results.rows[0].count });
+  });
+};
+
 module.exports = {
   getAllTasks,
   getTaskById,
   createTask,
   updateTask,
-  deleteTask
+  deleteTask,
+  countTasks,
 };

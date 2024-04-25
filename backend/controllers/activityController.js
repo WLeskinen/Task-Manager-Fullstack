@@ -48,10 +48,18 @@ const deleteActivity = (req, res) => {
   });
 };
 
+const countActivities = (req, res) => {
+  pool.query('SELECT COUNT(*) FROM activities', (error, results) => {
+    if (error) throw error;
+    res.status(200).json({ totalActivities: results.rows[0].count });
+  });
+};
+
 module.exports = {
   getAllActivities,
   getActivityById,
   createActivity,
   updateActivity,
-  deleteActivity
+  deleteActivity,
+  countActivities,
 };

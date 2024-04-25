@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import axios from 'axios'; FOR LATER
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 // Statistics interface
@@ -18,19 +18,26 @@ const Statistics: React.FC = () => {
     completedActivities: 0,
   });
 
-  useEffect(() => {                             // TEMPORARY HARDCODED DATA.
-    const fetchStatistics = async () => {       // REPLACE WITH AXIOS LATER.
-      // Temporary placeholders for statistics data
-      const tasksResponse = { data: { total: 10, completed: 5 } };
-      const activitiesResponse = { data: { total: 15, completed: 7 } };
-
-      setStatistics({
-        totalTasks: tasksResponse.data.total,
-        completedTasks: tasksResponse.data.completed,
-        totalActivities: activitiesResponse.data.total,
-        completedActivities: activitiesResponse.data.completed,
-      });
+  useEffect(() => {                             
+    const fetchStatistics = async () => {
+      try {
+        const [tasksResponse, activitiesResponse] = await Promise.all([
+          axios.get('http://localhost:3000/api/tasks/count'),
+          axios.get('http://localhost:3000/api/activities/count')
+        ]);
+    
+        setStatistics({
+          totalTasks: tasksResponse.data.totalTasks,
+          totalActivities: activitiesResponse.data.totalActivities,
+          completedTasks: statistics.completedTasks,
+          completedActivities: statistics.completedActivities,
+        });
+      } catch (error) {
+        console.error("Error fetching statistics:", error);
+      }
     };
+    
+    
 
     fetchStatistics();
   }, []);
