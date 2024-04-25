@@ -3,19 +3,24 @@ import { ActivityModel } from "../models/activityModels";
 
 const API_URL = "http://localhost:3000/api/activities";
 
-// Get activities list based on search query
 export async function getActivitiesDB(query: string = "") {
   try {
     const response: AxiosResponse = await axios.get(`${API_URL}/?q=${query}`);
     console.log(response);
     if (!response.data) return [];
-    const data: ActivityModel[] = response.data;
+    const data: ActivityModel[] = response.data.map((activity : ActivityModel) => ({
+      ...activity,
+      tags: typeof activity.tags === 'string' ? JSON.parse(activity.tags) : activity.tags,
+      startDate: activity.startDate ? new Date(activity.startDate) : null,
+      endDate: activity.endDate ? new Date(activity.endDate) : null,
+    }));
     return data;
   } catch (error) {
     console.error(error);
     throw error;
   }
 }
+
 
 // Get activity by id
 export async function getActivityByIdDB(id: string) {
