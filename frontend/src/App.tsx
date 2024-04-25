@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Dashboard from './routes/dashboard';
-import Tasks from './routes/tasks';
+import Tasks from './routes/Tasks';
 import Activities from './routes/activities';
 import Statistics from './routes/statistics';
 
