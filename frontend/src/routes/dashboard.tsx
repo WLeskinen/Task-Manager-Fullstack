@@ -1,24 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './dashboard.css';
+import './index.css';
 
 const Dashboard: React.FC = () => {
   return (
     <div>
-      <h1 className="dashboard-title">Task Manager</h1>
-      <div className="dashboard-grid">
-        <div className="select-box">
-          <h2><Link to="/tasks" className="select-box">Tasks</Link></h2>
-          {/* Placeholder for tasks */}
-        </div>
-        <div className="select-box" className="select-box">
-        <h2><Link to="/activities">Activities</Link></h2>
-          {/* Placeholder for activities */}
-        </div>
-        <div className="select-box" >
-          <h2><Link to ="/statistics">Statistics / Analytics</Link></h2>
-          {/* Placeholder for statistics */}
-        </div>
+<h1 className="text-7xl font-bold text-white text-center bg-primary py-9 font-ebrima">Task Manager</h1>
+      <div>
+      <div className="flex justify-between bg-white px-6 py-4">
+      <div className="flex-1 bg-secondary text-center text-primary text-4xl font-bold font-ebrima p-4 rounded-lg mr-4">
+      <Link to="/tasks" className="select-box">Tasks</Link>
+      </div>
+        <div className="flex-1 bg-secondary text-center text-primary text-4xl font-bold font-ebrima p-4 rounded-lg mr-4">
+        <Link to="/activities">Activities</Link>
+      </div>
+        <div className="flex-1 bg-secondary text-center text-primary text-4xl font-bold font-ebrima p-4 rounded-xl">
+        <Link to="/statistics">Statistics</Link>
+      </div>
+    </div>
       </div>
       <div className="overview-info">
         <h3 className="overview-heading">Total Completed</h3>
