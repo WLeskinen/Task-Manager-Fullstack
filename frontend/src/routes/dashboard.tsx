@@ -17,7 +17,7 @@ const Dashboard: React.FC = () => {
           Statistics
         </Link>
       </div>
-      <div className="bg-primary py-10 px-6">
+      <div className="bg-primary py-16 px-6">
         <div className="flex justify-between">
           <div>
             <h3 className="overview-heading text-white font-light font-corbel" style={{ fontSize: '45px' }}>Total Completed</h3>
