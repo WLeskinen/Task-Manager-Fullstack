@@ -27,18 +27,18 @@ const Dashboard: React.FC = () => {
           <div>
             <h3 className="tasks-heading text-white font-light font-corbel" style={{ fontSize: '45px' }}>Tasks</h3>
             <div className="task-box">
-              <p className="bg-box border-2 border-outline text-text text-xl w-box h-box align-left p-5 rounded-lg mb-4">Task 1</p>
-              <p className="bg-box border-2 border-outline text-text text-xl w-box h-box align-left p-5 rounded-lg mb-4">Task 2</p>
-              <p className="bg-box border-2 border-outline text-text text-xl w-box h-box align-left p-5 rounded-lg mb-4">Task 3</p>
+              <p className="bg-box border-2 border-outline text-text text-xl w-box h-box align-left p-5 rounded-lg mb-4">Prepare Agenda</p>
+              <p className="bg-box border-2 border-outline text-text text-xl w-box h-box align-left p-5 rounded-lg mb-4">Send Invitations</p>
+              <p className="bg-box border-2 border-outline text-text text-xl w-box h-box align-left p-5 rounded-lg mb-4">Create Presentation Slides</p>
               <br />
             </div>
           </div>
           <div>
             <h3 className="activities-heading text-white font-light font-corbel" style={{ fontSize: '45px' }}>Activities</h3>
             <div className="activity-box">
-              <p className="bg-box border-2 border-outline text-text text-xl w-box h-box align-left p-5 rounded-lg mb-4">Activity 1</p>
-              <p className="bg-box border-2 border-outline text-text text-xl w-box h-box align-left p-5 rounded-lg mb-4">Activity 2</p>
-              <p className="bg-box border-2 border-outline text-text text-xl w-box h-box align-left p-5 rounded-lg mb-4">Activity 3</p>
+              <p className="bg-box border-2 border-outline text-text text-xl w-box h-box align-left p-5 rounded-lg mb-4">Team Meeting</p>
+              <p className="bg-box border-2 border-outline text-text text-xl w-box h-box align-left p-5 rounded-lg mb-4">Product Demo</p>
+              <p className="bg-box border-2 border-outline text-text text-xl w-box h-box align-left p-5 rounded-lg mb-4">Workshop on Time Management</p>
               <br />
             </div>
           </div>
