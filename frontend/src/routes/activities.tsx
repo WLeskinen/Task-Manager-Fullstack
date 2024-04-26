@@ -60,17 +60,17 @@ const Activities: React.FC = () => {
             <th style={{ width: '14.28%' }}>Options</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="font-bold font-ebrima bg-secondary text-primary" style={{ fontSize: '30px', tableLayout: 'fixed', width: '100%' }}>
           {activities.length > 0 ? (
             activities.map((activity) => (
               <tr key={activity.id!}>
-                <td>{activity.title}</td>
-                <td>{activity.description}</td>
-                <td>{activity.startDate?.toString()}</td>
-                <td>{activity.endDate?.toString()}</td>
-                <td>{activity.status}</td>
-                <td>{Array.isArray(activity.tags) ? activity.tags.join(", ") : activity.tags}</td>
-                <td>{activity.activityType}</td>
+                <td style={{ width: '14.28%' }}>{activity.title}</td>
+                <td style={{ width: '14.28%' }}>{activity.description}</td>
+                <td style={{ width: '14.28%' }}>{activity.startDate?.toString()}</td>
+                <td style={{ width: '14.28%' }}>{activity.endDate?.toString()}</td>
+                <td style={{ width: '14.28%' }}>{activity.status}</td>
+                <td style={{ width: '14.28%' }}>{Array.isArray(activity.tags) ? activity.tags.join(", ") : activity.tags}</td>
+                <td style={{ width: '14.28%' }}>{activity.activityType}</td>
                 <td>
                   {/* Edit button */}
                   <button onClick={() => setEditingActivity(activity)}>Edit</button>
