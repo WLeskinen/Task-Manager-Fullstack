@@ -7,13 +7,13 @@ const Dashboard: React.FC = () => {
     <div>
       <h1 className="text-7xl font-bold text-white text-center bg-primary py-9 font-ebrima">Task Manager</h1>
       <div className="flex justify-between bg-white px-3 py-10">
-        <div className="flex-1 bg-secondary text-center text-primary text-4xl font-bold font-ebrima p-4 rounded-lg mr-4">
+  <div className="flex-1 bg-secondary text-center text-primary text-4xl font-bold font-ebrima p-4 rounded-lg mr-4 relative overflow-hidden hover:border-red-500 border-2 transition-all duration 200">
           <Link to="/tasks" className="select-box">Tasks</Link>
         </div>
-        <div className="flex-1 bg-secondary text-center text-primary text-4xl font-bold font-ebrima p-4 rounded-lg mr-4">
+        <div className="flex-1 bg-secondary text-center text-primary text-4xl font-bold font-ebrima p-4 rounded-lg mr-4 relative overflow-hidden hover:border-red-500 border-2 transition-all duration 200">
           <Link to="/activities">Activities</Link>
         </div>
-        <div className="flex-1 bg-secondary text-center text-primary text-4xl font-bold font-ebrima p-4 rounded-lg mr-4">
+        <div className="flex-1 bg-secondary text-center text-primary text-4xl font-bold font-ebrima p-4 rounded-lg mr-4 relative overflow-hidden hover:border-red-500 border-2 transition-all duration 200">
           <Link to="/statistics">Statistics</Link>
         </div>
       </div>
