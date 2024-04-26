@@ -58,31 +58,31 @@ const statistics: React.FC = () => {
 
 
   return (
-    <div>
-      <NavBar />
-      <h1 className="text-7xl font-bold text-white text-center bg-primary py-9 font-ebrima">Statistics</h1>
-      <div className="flex justify-between px-4">
-        <div className="text-center">
-          <h2 className="text-2xl text-black bg-white font-ebrima font-bold py-12 px-8" style={{ fontSize: '100px' }}>Tasks</h2>
-        </div>
-        <div className="text-center">
-        <h2 className="text-2xl text-black bg-white font-ebrima font-bold py-12 px-8" style={{ fontSize: '100px' }}>Activities</h2>
+      <div>
+        <NavBar />
+        <h1 className="text-7xl font-bold text-white text-center bg-primary py-9 font-ebrima">Statistics</h1>
+        
+        {/* Tasks Statistics */}
+        <div className="flex justify-between px-4">
+          <div className="text-center">
+            <h2 className="text-2xl text-black bg-white font-ebrima font-bold py-12 px-8" style={{ fontSize: '100px' }}>Tasks</h2>
+            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Total: {statistics.totalTasks}</p>
+            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Completed: {statistics.completedTasks}</p>
+            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Incomplete:</p>
+            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Percentage:</p>
+          </div>
+          
+          {/* Activities Statistics */}
+          <div className="text-center">
+            <h2 className="text-2xl text-black bg-white font-ebrima font-bold py-12 px-8" style={{ fontSize: '100px' }}>Activities</h2>
+            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Total: {statistics.totalActivities}</p>
+            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Completed: {statistics.completedActivities}</p>
+            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Incomplete:</p>
+            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Percentage:</p>
+          </div>
         </div>
       </div>
-      <div className="flex justify-between">
-        <div className="w-1/2 h-6 bg-slash"></div>
-        <div className="w-1/2 h-6 bg-slash"></div>
-      </div>
-      <p className="text-lg text-black font-ebrima fontpy-2">Total: {statistics.totalTasks}</p>
-      <p>Completed: {statistics.completedTasks}</p>
-      <p>Incomplete:</p>
-      <p>Percentage:</p>
-      <p>Total: {statistics.totalActivities}</p>
-      <p>Completed: {statistics.completedActivities}</p>
-      <p>Incomplete:</p>
-      <p>Percentage:</p>
-    </div>
-  );
+    );    
 };
 
 export default statistics;
