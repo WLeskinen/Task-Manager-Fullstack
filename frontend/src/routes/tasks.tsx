@@ -47,16 +47,16 @@ const Tasks: React.FC = () => {
         >Add New Task</button>
       </div>
       {/* Display the list of tasks */}
-      <Table striped bordered hover>
-        <thead>
+      <Table>
+      <thead className="font-bold font-ebrima bg-slash text-white" style={{ fontSize: '30px', tableLayout: 'fixed', width: '100%' }}>
           <tr>
-            <th>Name</th>
-            <th>Content</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Status</th>
-            <th>Tags</th>
-            <th>Options</th>
+            <th style={{ width: '14.28%' }}>Name</th>
+            <th style={{ width: '14.28%' }}>Content</th>
+            <th style={{ width: '14.28%' }}>Start Date</th>
+            <th style={{ width: '14.28%' }}>End Date</th>
+            <th style={{ width: '14.28%' }}>Status</th>
+            <th style={{ width: '14.28%' }}>Tags</th>
+            <th style={{ width: '14.28%' }}>Options</th>
           </tr>
         </thead>
         <tbody>
