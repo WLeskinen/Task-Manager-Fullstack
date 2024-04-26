@@ -26,17 +26,17 @@ const Dashboard: React.FC = () => {
           <div>
             <h3 className="tasks-heading text-white font-light font-corbel" style={{ fontSize: '45px' }}>Tasks</h3>
             <div className="task-box">
-              <p>Task 1</p>
-              <p>Task 2</p>
-              <p>Task 3</p>
+            <p className="bg-box border-2 border-outline text-text w-box h-box align-left p-5">Task 1</p>
+            <p className="bg-box border-2 border-outline text-text w-box h-box align-left p-5">Task 2</p>
+            <p className="bg-box border-2 border-outline text-text w-box h-box align-left p-5">Task 3</p>
             </div>
           </div>
           <div>
             <h3 className="activities-heading text-white font-light font-corbel" style={{ fontSize: '45px' }}>Activities</h3>
             <div className="activity-box">
-              <p>Activity 1</p>
-              <p>Activity 2</p>
-              <p>Activity 3</p>
+            <p className="bg-box border-2 border-outline text-text w-box h-box align-left p-5">Activity 1</p>
+            <p className="bg-box border-2 border-outline text-text w-box h-box align-left p-5">Activity 2</p>
+            <p className="bg-box border-2 border-outline text-text w-box h-box align-left p-5">Activity 3</p>
             </div>
           </div>
         </div>
