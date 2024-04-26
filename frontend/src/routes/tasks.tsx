@@ -59,16 +59,16 @@ const Tasks: React.FC = () => {
             <th style={{ width: '14.28%' }}>Options</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="font-bold font-ebrima bg-secondary text-primary" style={{ fontSize: '30px', tableLayout: 'fixed', width: '100%' }}>
           {tasks.length > 0 ? (
             tasks.map((task) => (
               <tr key={task.id!}>
-                <td>{task.name}</td>
-                <td>{task.content}</td>
-                <td>{task.startDate ? format(parseISO(task.startDate.toDateString()), 'dd/MM/yyyy') : ''}</td>
-                <td>{task.endDate ? format(parseISO(task.endDate.toString()), 'dd/MM/yyyy') : ''}</td>
-                <td>{task.status}</td>
-                <td>{Array.isArray(task.tags) ? task.tags.join(", ") : task.tags}</td>
+                <td style={{ width: '14.28%' }}>{task.name}</td>
+                <td style={{ width: '14.28%' }}>{task.content}</td>
+                <td style={{ width: '14.28%' }}>{task.startDate ? format(parseISO(task.startDate.toDateString()), 'dd/MM/yyyy') : ''}</td>
+                <td style={{ width: '14.28%' }}>{task.endDate ? format(parseISO(task.endDate.toString()), 'dd/MM/yyyy') : ''}</td>
+                <td style={{ width: '14.28%' }}>{task.status}</td>
+                <td style={{ width: '14.28%' }}>{Array.isArray(task.tags) ? task.tags.join(", ") : task.tags}</td>
                 <td>
                   {/* Edit button */}
                   <button onClick={() => setEditingTask(task)}>Edit</button>
