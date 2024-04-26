@@ -1,30 +1,68 @@
-# React + TypeScript + Vite
+# TaskManager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
 
-Currently, two official plugins are available:
+An application that was made to make managing your daily tasks and activities easier.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
 
-## Expanding the ESLint configuration
+### Frontend
+- [React](https://reactjs.org/)
+- [TypeScript](https://typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Backend
+- [Node.js](https://nodejs.org/)
+- [Express](https://expressjs.com/)
+- [PostgreSQL](https://postgresql.org/)
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+### Prerequisites
+
+The following are required to run this program.
+
+-   Node.js
+-   npm
+-   PostgreSQL
+
+### Developers
+
+This web application is developed by the following users:
+
+-   [Waltteri Leskinen](https://github.com/WLeskinen/)
+-   [Amerian Mehdi](https://github.com/Mehdi-Amerian)
+-   [Oliver Oldenburg](https://github.com/OliverOldenburg)
+
+### Installation
+
+Before installing all the dependencies, one must create an .env file into the backend folder with the following:
+
+- DB_HOST
+- DB_PORT
+- DB_NAME
+- DB_USER
+- DB_PASSWORD
+
+Optional:
+You can run all the queries through postgreSQL using the files in the db_scripts folder. This includes queries for dummy data as well as creation of the tables.
+
+```bash
+# Clone the repository
+https://github.com/
+
+# Navigate to both frontend and backend in the folder.
+# Then run npm install.
+cd backend
+npm install
+cd frontend
+npm install
+
+# Start the development in the frontend server
+cd frontend
+npm run dev
+
+# Run the backend Express server in the backend.
+cd backend
+node server.js
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
