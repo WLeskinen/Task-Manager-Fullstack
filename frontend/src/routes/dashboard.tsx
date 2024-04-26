@@ -20,11 +20,11 @@ const Dashboard: React.FC = () => {
       <div className="bg-primary py-6 px-6">
         <div className="flex justify-between">
           <div>
-            <h3 className="overview-heading text-white font-light font-corbel">Total Completed</h3>
-            <h1 className="completion-rate text-6xl text-white font-bold">53%</h1>
+          <h3 className="overview-heading text-white font-light font-corbel" style={{ fontSize: '45px' }}>Total Completed</h3>
+          <h1 className="completion-rate text-6xl text-white font-bold" style={{ fontSize: '300px' }}>53%</h1>
           </div>
           <div>
-            <h3 className="tasks-heading text-white font-light font-corbel">Tasks</h3>
+            <h3 className="tasks-heading text-white font-light font-corbel" style={{ fontSize: '45px' }}>Tasks</h3>
             <div className="task-box">
               <p>Task 1</p>
               <p>Task 2</p>
@@ -32,7 +32,7 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
           <div>
-            <h3 className="activities-heading text-white font-light font-corbel">Activities</h3>
+            <h3 className="activities-heading text-white font-light font-corbel" style={{ fontSize: '45px' }}>Activities</h3>
             <div className="activity-box">
               <p>Activity 1</p>
               <p>Activity 2</p>
