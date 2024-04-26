@@ -39,7 +39,7 @@ const Activities: React.FC = () => {
   return (
     <div>
       <NavBar />
-      <h1>Activities</h1>
+      <h1 className="text-7xl font-bold text-white text-center bg-primary py-9 font-ebrima">Activities</h1>
       <p>
         <button onClick={() => setNewActivity({} as Activity)}>Add New Activity</button>
       </p>

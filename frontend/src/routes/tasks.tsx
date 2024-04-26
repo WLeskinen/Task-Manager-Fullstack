@@ -39,7 +39,7 @@ const Tasks: React.FC = () => {
   return (
     <div>
       <NavBar />
-      <h1>Tasks</h1>
+      <h1 className="text-7xl font-bold text-white text-center bg-primary py-9 font-ebrima">Tasks</h1>
       <p>
         <button onClick={() => setNewTask({} as Task)}>Add New Task</button>
       </p>
