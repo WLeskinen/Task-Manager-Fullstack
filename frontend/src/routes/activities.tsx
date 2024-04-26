@@ -40,21 +40,24 @@ const Activities: React.FC = () => {
     <div>
       <NavBar />
       <h1 className="text-7xl font-bold text-white text-center bg-primary py-9 font-ebrima">Activities</h1>
-      <p>
-        <button onClick={() => setNewActivity({} as Activity)}>Add New Activity</button>
-      </p>
+      <div className="flex justify-start items-center p-4">
+        <button onClick={() => setNewActivity({} as Activity)}
+        className="font-bold font-ebrima p-3 rounded-lg mr-4 relative overflow-hidden hover:border-red-500 border-2 transition-all duration-200"
+        style={{ fontSize: '22px' }}
+        >Add New Activity</button>
+      </div>
       {/* Display the list of activities */}
-      <Table striped bordered hover>
-        <thead>
+      <Table>
+      <thead className="font-bold font-ebrima bg-slash text-white" style={{ fontSize: '30px', tableLayout: 'fixed', width: '100%' }}>
           <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Status</th>
-            <th>Tags</th>
-            <th>Activity Type</th>
-            <th>Actions</th>
+            <th style={{ width: '14.28%' }}>Title</th>
+            <th style={{ width: '14.28%' }}>Description</th>
+            <th style={{ width: '14.28%' }}>Start Date</th>
+            <th style={{ width: '14.28%' }}>End Date</th>
+            <th style={{ width: '14.28%' }}>Status</th>
+            <th style={{ width: '14.28%' }}>Tags</th>
+            <th style={{ width: '14.28%' }}>Activity Type</th>
+            <th style={{ width: '14.28%' }}>Options</th>
           </tr>
         </thead>
         <tbody>

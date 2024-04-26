@@ -72,6 +72,7 @@ const Tasks: React.FC = () => {
                 <td>
                   {/* Edit button */}
                   <button onClick={() => setEditingTask(task)}>Edit</button>
+                  <br />
                   {/* Delete button */}
                   <DeleteTask taskId={Number(task.id)} setTasks={setTasks} fetchTasks={fetchTasks} />
                 </td>
