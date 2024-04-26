@@ -12,7 +12,7 @@ export default {
       },
       colors: {
         primary: '#1b1b1b', // Set default background color
-        secondary: '#FFFFFF', // Alternative color for certain sections
+        secondary: '#F5F5F5', // Alternative color for certain sections
       },
     },
   },
