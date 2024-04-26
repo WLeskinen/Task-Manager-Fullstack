@@ -60,13 +60,27 @@ const statistics: React.FC = () => {
   return (
     <div>
       <NavBar />
-      <h1>Statistics</h1>
-      <h2>Tasks</h2>
-      <p>Total: {statistics.totalTasks}</p>
+      <h1 className="text-7xl font-bold text-white text-center bg-primary py-9 font-ebrima">Statistics</h1>
+      <div className="flex justify-between px-4">
+        <div className="text-center">
+          <h2 className="text-2xl text-black bg-white font-ebrima font-bold py-12 px-8" style={{ fontSize: '100px' }}>Tasks</h2>
+        </div>
+        <div className="text-center">
+        <h2 className="text-2xl text-black bg-white font-ebrima font-bold py-12 px-8" style={{ fontSize: '100px' }}>Activities</h2>
+        </div>
+      </div>
+      <div className="flex justify-between">
+        <div className="w-1/2 h-6 bg-slash"></div>
+        <div className="w-1/2 h-6 bg-slash"></div>
+      </div>
+      <p className="text-lg text-black font-ebrima fontpy-2">Total: {statistics.totalTasks}</p>
       <p>Completed: {statistics.completedTasks}</p>
-      <h2>Activities</h2>
+      <p>Incomplete:</p>
+      <p>Percentage:</p>
       <p>Total: {statistics.totalActivities}</p>
       <p>Completed: {statistics.completedActivities}</p>
+      <p>Incomplete:</p>
+      <p>Percentage:</p>
     </div>
   );
 };
