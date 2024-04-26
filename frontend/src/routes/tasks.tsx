@@ -40,9 +40,12 @@ const Tasks: React.FC = () => {
     <div>
       <NavBar />
       <h1 className="text-7xl font-bold text-white text-center bg-primary py-9 font-ebrima">Tasks</h1>
-      <p>
-        <button onClick={() => setNewTask({} as Task)}>Add New Task</button>
-      </p>
+      <div className="flex justify-start items-center p-4">
+        <button onClick={() => setNewTask({} as Task)}
+        className="font-bold font-ebrima p-3 rounded-lg mr-4 relative overflow-hidden hover:border-red-500 border-2 transition-all duration-200"
+        style={{ fontSize: '22px' }}
+        >Add New Task</button>
+      </div>
       {/* Display the list of tasks */}
       <Table striped bordered hover>
         <thead>
