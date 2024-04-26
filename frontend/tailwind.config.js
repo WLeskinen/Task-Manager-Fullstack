@@ -14,7 +14,7 @@ export default {
         primary: '#1b1b1b', // Set default background color
         secondary: '#F5F5F5', // Alternative color for certain sections
         box: '#292929', // Color of the box
-        text: '#8f8f8f', // Text color inside the box
+        text: '#ffffff', // Text color inside the box
         outline: '#8f8f8f', // Outline color of the box
       },
       width: {
