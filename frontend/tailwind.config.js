@@ -17,6 +17,7 @@ export default {
         text: '#ffffff', // Text color inside the box
         outline: '#8f8f8f', // Outline color of the box
         slash: '#e80029', // New color for the slash
+        navBar: '#111111', // Navbar color
       },
       width: {
         'box': '350px', // Width of the box
