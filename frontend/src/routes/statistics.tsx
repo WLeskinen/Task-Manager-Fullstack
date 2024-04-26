@@ -19,9 +19,8 @@ const statistics: React.FC = () => {
     completedActivities: 0,
   });
 
-  useEffect(() => {                             // TEMPORARY HARDCODED DATA.
-    const fetchStatistics = async () => {       // REPLACE WITH AXIOS LATER.
-      // Temporary placeholders for statistics data
+  useEffect(() => {                             
+    const fetchStatistics = async () => {       
       const tasksResponse = { data: { total: 10, completed: 5 } };
       const activitiesResponse = { data: { total: 15, completed: 7 } };
 
@@ -36,27 +35,7 @@ const statistics: React.FC = () => {
 
     fetchStatistics();
   }, []);
-
-
-
-    // AXIOS CODE FOR WHEN DATABASE IS IMPLEMENTED.
-
-    // useEffect(() => {
-    //  const fetchStatistics = async () => {
-    //    const tasksResponse = await axios.get('/tasks/statistics');
-    //   const activitiesResponse = await axios.get('/activities/statistics');
-    //      setStatistics({
-    //        totalTasks: tasksResponse.data.total,
-    //        completedTasks: tasksResponse.data.completed,
-    //        totalActivities: activitiesResponse.data.total,
-    //        completedActivities: activitiesResponse.data.completed,
-    //      });
-    //    };
-    //
-    //    fetchStatistics();
-    //  }, []); 
-
-
+  
   return (
       <div>
         <NavBar />
@@ -66,19 +45,19 @@ const statistics: React.FC = () => {
         <div className="flex justify-between px-4">
           <div className="text-center">
             <h2 className="text-2xl text-black bg-white font-ebrima font-bold py-12 px-8" style={{ fontSize: '100px' }}>Tasks</h2>
-            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Total: {statistics.totalTasks}</p>
-            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Completed: {statistics.completedTasks}</p>
-            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Incomplete:</p>
-            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Percentage:</p>
+            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Total: 18 </p>
+            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Completed: 9</p>
+            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Incomplete: 9</p>
+            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Percentage: 50%</p>
           </div>
           
           {/* Activities Statistics */}
           <div className="text-center">
             <h2 className="text-2xl text-black bg-white font-ebrima font-bold py-12 px-8" style={{ fontSize: '100px' }}>Activities</h2>
-            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Total: {statistics.totalActivities}</p>
-            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Completed: {statistics.completedActivities}</p>
-            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Incomplete:</p>
-            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Percentage:</p>
+            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Total: 14</p>
+            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Completed: 3</p>
+            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Incomplete: 11</p>
+            <p className="text-2xl text-black font-ebrima font-bold py-8 px-4" style={{ fontSize: '52px' }}>Percentage:21.45%</p>
           </div>
         </div>
       </div>
